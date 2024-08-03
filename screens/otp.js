@@ -246,7 +246,6 @@ const Otp = ({ route, navigation }) => {
                 error={errors?.[formItem]}
                 keyboardType="numeric"
                 onChangeText={async (text) => {
-                  console.log(text);
                   const clipboardContent = await Clipboard.getStringAsync();
                   if (
                     /^\d{4}$/.test(clipboardContent) &&

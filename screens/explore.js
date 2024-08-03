@@ -19,6 +19,7 @@ const Explore = () => {
   const isReady = webSocketService?.socket?.readyState === WebSocket.OPEN;
   const [socketConnectionStatus, setSocketConnectionStatus] = useState(false);
   const [touched, setTouched] = useState(false);
+  const [maploading, setMapLoading] = useState(true);
   const [loading, setLoading] = useState(true);
   const events = useSelector((state) => state.events.events);
   const [region, setRegion] = useState(null);
@@ -34,6 +35,7 @@ const Explore = () => {
     useCallback(() => {
       (async () => {
         let retrieveRegion = await AsyncStorage.getItem("region");
+        setMapLoading(false);
         if (retrieveRegion) {
           retrieveRegion = JSON.parse(retrieveRegion);
           setRegion(retrieveRegion);
@@ -56,9 +58,11 @@ const Explore = () => {
             let { status } = await Location.requestForegroundPermissionsAsync();
             if (status !== "granted") {
               setErrorMsg("Permission to access location was denied");
+              setMapLoading(false);
               return;
             }
             let location = await Location.getCurrentPositionAsync({});
+            setMapLoading(false);
             let address = await Location.reverseGeocodeAsync({
               latitude: location.coords.latitude,
               longitude: location.coords.longitude,
@@ -101,6 +105,7 @@ const Explore = () => {
         setIndex(1);
         setTouched(false);
         setEventList([]);
+        setMapLoading(false);
         setSearchTerm("");
         setLoading(true);
         dispatch(defaultGetEventsStatus());
@@ -206,7 +211,7 @@ const Explore = () => {
             marginLeft: 10,
             marginRight: 10,
           }}>
-          {getEventsStatus === PENDING ? <Loader /> : null}
+          {getEventsStatus === PENDING || maploading ? <Loader /> : null}
           <Searchbar
             setIndex={setIndex}
             setEventList={setEventList}
