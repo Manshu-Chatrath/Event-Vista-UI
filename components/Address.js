@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { Animated } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import { useCallback } from "react";
+import { GOOGLE_KEY } from "../key";
 import { View } from "react-native";
-import dotenv from "dotenv";
+
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 const Address = ({ isFocused, setIsFocused, setRegion, region, isSubmit }) => {
   const [animatedIsFocused] = useState(new Animated.Value(0));
@@ -80,7 +81,7 @@ const Address = ({ isFocused, setIsFocused, setRegion, region, isSubmit }) => {
         }}
         onFail={(error) => console.log(error)}
         query={{
-          key: process.env.GOOGLE_KEY,
+          key: GOOGLE_KEY,
           language: "en",
         }}
       />
