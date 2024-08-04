@@ -34,7 +34,8 @@ press a to run it in android emulator/install the expo app on android and scan t
 When creating an event, organizers can leverage the AI feature:
 AI-Powered Event Creation: Upload an image of your event poster. The AI will automatically analyze the image and pre-populate the event details for you, such as event name, description, and location.
 
-
+# Tutorial Video
+https://youtu.be/FJ8zkDyCUhY?feature=shared
 
 # Screenshots
 ![Screenshot_20240804-012809](https://github.com/user-attachments/assets/56cbd085-486d-4efc-abce-d46befe2f32a)
@@ -46,5 +47,4 @@ AI-Powered Event Creation: Upload an image of your event poster. The AI will aut
 ![Screenshot_20240804-013203](https://github.com/user-attachments/assets/bff042bc-226a-4183-8149-aa8945f384ab)
 
 
-# Tutorial Video
-https://youtu.be/FJ8zkDyCUhY?feature=shared
+
